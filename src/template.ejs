@@ -184,8 +184,8 @@
                 <th>Maximum</th>
                 <th>Median</th> 
                 <th>Minimum</th>
-                <th>90th Percentile</th>
                 <th>95th Percentile</th>
+                <th>99th Percentile</th>
               </tr>
             </thead>
             
@@ -242,14 +242,14 @@
                   <td>-</td>
                 <% } %>   
                               
-                <% if(metric.values['p(90)']) { %>
-                  <td class="<%= checkFailed(metric, 'p(90)') %>"><%= metric.values['p(90)'].toFixed(2) %></td>
+                <% if(metric.values['p(95)']) { %>
+                  <td class="<%= checkFailed(metric, 'p(95)') %>"><%= metric.values['p(95)'].toFixed(2) %></td>
                 <% } else { %>
                   <td>-</td>
                 <% } %>
 
-                <% if(metric.values['p(95)']) { %>
-                  <td class="<%= checkFailed(metric, 'p(95)') %>"><%= metric.values['p(95)'].toFixed(2) %></td>
+                <% if(metric.values['p(99)']) { %>
+                  <td class="<%= checkFailed(metric, 'p(99)') %>"><%= metric.values['p(99)'].toFixed(2) %></td>
                 <% } else { %>
                   <td>-</td> 
                 <% } %>
@@ -281,8 +281,8 @@
                   <th>Maximum</th>
                   <th>Median</th> 
                   <th>Minimum</th>
-                  <th>90th Percentile</th>
                   <th>95th Percentile</th>
+                  <th>99th Percentile</th>
                 </tr>
               </thead>
               <% } %>
@@ -325,14 +325,14 @@
                   <td>-</td>
                 <% } %>   
                               
-                <% if(metric.values['p(90)']) { %>
-                  <td class="<%= checkFailed(metric, 'p(90)') %>"><%= metric.values['p(90)'].toFixed(2) %></td>
+                <% if(metric.values['p(95)']) { %>
+                  <td class="<%= checkFailed(metric, 'p(95)') %>"><%= metric.values['p(95)'].toFixed(2) %></td>
                 <% } else { %>
                   <td>-</td>
                 <% } %>
 
-                <% if(metric.values['p(95)']) { %>
-                  <td class="<%= checkFailed(metric, 'p(95)') %>"><%= metric.values['p(95)'].toFixed(2) %></td>
+                <% if(metric.values['p(99)']) { %>
+                  <td class="<%= checkFailed(metric, 'p(99)') %>"><%= metric.values['p(99)'].toFixed(2) %></td>
                 <% } else { %>
                   <td>-</td> 
                 <% } %>
