@@ -266,8 +266,32 @@
             sortedMetrics[k] = data.metrics[k]
           });
           for(metricName in sortedMetrics) {
-            if(standardMetrics.includes(metricName) || otherMetrics.includes(metricName)) { continue }
-            var metric = sortedMetrics[metricName] 
+
+            const actionPassKey = `counter_passes_action_${metricName}`;
+            const actionFailKey = `counter_fails_action_${metricName}`;
+            const aggregatePassKey = `counter_passes_aggregate_${metricName}`;
+            const aggregateFailKey = `counter_fails_aggregate_${metricName}`;
+
+            let passes = 0;
+            let fails = 0;
+            let hasCheckData = false;
+
+            if (data.metrics[actionPassKey] && data.metrics[actionFailKey]) {
+              console.log("action yes");
+              passes = data.metrics[actionPassKey].values.count || 0;
+              fails = data.metrics[actionFailKey].values.count || 0;
+              hasCheckData = true;
+            }
+            else if (data.metrics[aggregatePassKey] && data.metrics[aggregateFailKey])  {
+              console.log("aggregate yes");
+              passes = data.metrics[aggregatePassKey]?.values.count || 0;
+              fails - data.metrics[aggregateFailKey]?.values.count || 0;
+              hasCheckData = true;
+            }
+
+            if(standardMetrics.includes(metricName) || otherMetrics.includes(metricName) || metricName.includes("counter_")) { continue }
+            var metric = sortedMetrics[metricName]
+
         %>
           <% if(first) { first = false %> <h2>Custom Metrics</h2> 
           <table class="pure-table pure-table-striped">
@@ -295,8 +319,8 @@
                   <td>-</td>
                 <% } %>
 
-                <% if(metric.values.rate) { %>
-                  <td class="<%= checkFailed(metric, 'rate') %>"><%= metric.values.rate.toFixed(2) %></td>
+                <% if(hasCheckData && (passes + fails) > 0) { %>
+                  <td><%= ((passes / (passes + fails)) * 100).toFixed(2) + "%" %></td>
                 <% } else { %>
                   <td>-</td>
                 <% } %>
@@ -445,6 +469,6 @@
       </div> 
       <!-- ---- end tab ---- -->
     </div>
-    <footer>K6 Reporter v<%= version %> - Ben Coleman 2021, <a href="https://github.com/benc-uk/k6-reporter">[GitHub]</a></footer>
+    <footer>K6 Reporter v<%= version %> - Ben Coleman 2021, <a href="https://github.com/benc-uk/k6-reporter">[GitHub]. This fork modified for Bede Gaming by Bede's Performance Team.</a></footer>
   </body>
 </html>
