@@ -277,13 +277,11 @@
             let hasCheckData = false;
 
             if (data.metrics[actionPassKey] && data.metrics[actionFailKey]) {
-              console.log("action yes");
               passes = data.metrics[actionPassKey].values.count || 0;
               fails = data.metrics[actionFailKey].values.count || 0;
               hasCheckData = true;
             }
             else if (data.metrics[aggregatePassKey] && data.metrics[aggregateFailKey])  {
-              console.log("aggregate yes");
               passes = data.metrics[aggregatePassKey]?.values.count || 0;
               fails - data.metrics[aggregateFailKey]?.values.count || 0;
               hasCheckData = true;
