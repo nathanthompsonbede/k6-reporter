@@ -282,8 +282,8 @@
               hasCheckData = true;
             }
             else if (data.metrics[aggregatePassKey] && data.metrics[aggregateFailKey])  {
-              passes = data.metrics[aggregatePassKey]?.values.count || 0;
-              fails - data.metrics[aggregateFailKey]?.values.count || 0;
+              passes = data.metrics[aggregatePassKey].values.count || 0;
+              fails = data.metrics[aggregateFailKey].values.count || 0;
               hasCheckData = true;
             }
 
