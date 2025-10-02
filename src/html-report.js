@@ -15,7 +15,12 @@ const version = '2.3.0'
 export function htmlReport(data, opts = {}) {
   // Default options
   if (!opts.title) {
-    opts.title = new Date().toISOString().slice(0, 16).replace('T', ' ')
+
+    let endDate = new Date();
+    let startDate = new Date(endDate.getTime() - data.state.testRunDurationMs).toISOString().slice(0,16).replace('T', ', ');
+    endDate = endDate.toISOString().slice(11, 16);
+
+    opts.title = startDate + " - " + endDate;
   }
   // eslint-disable-next-line
   if (!opts.hasOwnProperty('debug')) {
