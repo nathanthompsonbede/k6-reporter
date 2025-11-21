@@ -179,7 +179,7 @@
               <tr>
                 <th></th>
                 <th>Count</th>
-                <th>Rate</th>
+                <!--- <th>Rate</th>  -->
                 <th>Average</th>
                 <th>Maximum</th>
                 <th>Median</th> 
@@ -211,13 +211,13 @@
                 <% } else { %>
                   <td>-</td>
                 <% } %>
-
+                <!---
                 <% if(metric.values.rate) { %>
                   <td class="<%= checkFailed(metric, 'rate') %>"><%= metric.values.rate.toFixed(2) %></td>
                 <% } else { %>
                   <td>-</td>
                 <% } %>
-                
+                -->
                 <% if(metric.values.avg) { %>
                   <td class="<%= checkFailed(metric, 'avg') %>"><%= metric.values.avg.toFixed(2) %></td>
                 <% } else { %>
@@ -276,7 +276,7 @@
                 <tr>
                   <th></th>
                   <th>Count</th>
-                  <th>Rate</th>
+                  <!---<th>Rate</th>-->
                   <th>Average</th>
                   <th>Maximum</th>
                   <th>Median</th> 
@@ -294,13 +294,13 @@
                 <% } else { %>
                   <td>-</td>
                 <% } %>
-
+                <!---
                 <% if(metric.values.rate) { %>
                   <td class="<%= checkFailed(metric, 'rate') %>"><%= metric.values.rate.toFixed(2) %></td>
                 <% } else { %>
                   <td>-</td>
                 <% } %>
-                
+                -->
                 <% if(metric.values.avg) { %>
                   <td class="<%= checkFailed(metric, 'avg') %>"><%= metric.values.avg.toFixed(2) %></td>
                 <% } else { %>
