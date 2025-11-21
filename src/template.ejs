@@ -438,9 +438,17 @@
               <th>Requests per Second</th>
             </tr>
           </thead>
-          <% for(check of data.root_group.checks) { %>
+          <%
+          
+          function successRatePercent(passes, fails, decimals = 2)  {
+            const factor = 10 ** decimals
+            const total = passes + fails
+            return Math.floor((passes * 100 * factor) / total) / factor
+          }
+
+          for(check of data.root_group.checks) { %>
             <tr class="checkDetails <% if(check.fails > 0) { %>failed<% } %>">
-              <td width="50%"><%= check.name %></td><td><%= check.passes %></td><td><%= check.fails %></td><td><%= ((check.passes / (check.passes + check.fails)) * 100).toFixed(2) + "%" %></td><td><%= ((check.passes + check.fails) / (data.state.testRunDurationMs / 1000)).toFixed(2) %></td>
+              <td width="50%"><%= check.name %></td><td><%= check.passes %></td><td><%= check.fails %></td><td><%= successRatePercent(check.passes, check.fails) + "%" %></td><td><%= ((check.passes + check.fails) / (data.state.testRunDurationMs / 1000)).toFixed(2) %></td>
             </tr>
           <% } %>
         </table>     
